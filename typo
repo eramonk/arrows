@@ -1,0 +1,103 @@
+// Typographic Keyboard
+// Sergei Stolyarov <sergei@regolit.com>
+// Initial contribution by Alexey Ten <alexeyten+deb@gmail.com>
+// Additional contribution and code cleanup by Artur Dryomov <artur.dryomov@gmail.com>
+// Mainly based on the layout proposed by Ilya Birman
+// http://ilyabirman.ru/projects/typography-layout/
+default partial
+xkb_symbols "base" {
+   
+    // CAPSLOCK is a mode switch key to level3
+    key <CAPS> {
+       symbols[Group1] = [ ISO_Level3_Shift ]
+    };
+    modifier_map Mod5 { ISO_Level3_Shift };
+    // 1st keyboard row
+//    key <TLDE> { [ NoSymbol, NoSymbol, Escape, Escape ] }; // "~"
+//    key <AE01> { [ NoSymbol, NoSymbol, F1, F1 ] }; // "1"
+//    key <AE02> { [ NoSymbol, NoSymbol, F2, F2 ] }; // "2"
+//    key <AE03> { [ NoSymbol, NoSymbol, F3, F3 ] }; // "3"
+//    key <AE04> { [ NoSymbol, NoSymbol, F4, F4 ] }; // "4"
+//    key <AE05> { [ NoSymbol, NoSymbol, F5, F5 ] }; // "5"
+//    key <AE06> { [ NoSymbol, NoSymbol, F6, F6 ] }; // "6"
+//    key <AE07> { [ NoSymbol, NoSymbol, F7, F7 ] }; // "7"
+//    key <AE08> { [ NoSymbol, NoSymbol, F8, F8 ] }; // "8"
+//    key <AE09> { [ NoSymbol, NoSymbol, F9, F9 ] }; // "9"
+//    key <AE10> { [ NoSymbol, NoSymbol, F10, F10 ] }; // "0"
+//    key <AE11> { [ NoSymbol, NoSymbol, F11, F11 ] }; // "-"
+//    key <AE12> { [ NoSymbol, NoSymbol, F12, F12 ] }; // "="
+    // 2nd keyboard row
+// key <AD08> { [ NoSymbol, NoSymbol, Up, Up ] }; // "i"
+    key <AD01> { [ NoSymbol, NoSymbol, Escape, Escape ] }; // "q"
+    key <AD03> { [ NoSymbol, NoSymbol, EuroSign, NoSymbol ] }; // "e"
+    key <AD04> { [ NoSymbol, NoSymbol, registered, NoSymbol ] }; // "r"
+    key <AD05> { [ NoSymbol, NoSymbol, trademark, NoSymbol ] }; // "t"
+    key <AD06> { [ NoSymbol, NoSymbol, PgUp, PgUp ] }; // "y"
+    key <AD07> { [ NoSymbol, NoSymbol, Home, NoSymbol ] }; // "u"
+    key <AD09> { [ NoSymbol, NoSymbol, End, NoSymbol ] }; // "o"
+    key <AD10> { [ NoSymbol, NoSymbol, acute, doubleacute ] }; // "p"
+    key <AD11> { [ NoSymbol, NoSymbol, bracketleft, braceleft ] }; // "["
+    key <AD12> { [ NoSymbol, NoSymbol, bracketright, braceright ] }; // "]"
+    // 3rd keyboard row
+    key <AC01> { [ NoSymbol, NoSymbol, U0301, NoSymbol ] }; // "a"
+    key <AC02> { [ NoSymbol, NoSymbol, section, NoSymbol ] }; // "s"
+    key <AC03> { [ NoSymbol, NoSymbol, F2, F2 ] }; // "d"
+    key <AC04> { [ NoSymbol, NoSymbol, F1, F1 ] }; // "f"
+// key <AC06> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol ] }; // "h"
+// key <AC07> { [ NoSymbol, NoSymbol, Left, Left ] }; // "j"
+// key <AC08> { [ NoSymbol, NoSymbol, Down, Down ] }; // "k"
+// key <AC09> { [ NoSymbol, NoSymbol, Right, Right ] }; // "l"
+    key <AC10> { [ NoSymbol, NoSymbol, BackSpace, BackSpace ] }; // ";"
+    key <AC11> { [ NoSymbol, NoSymbol, Delete, Delete ] }; // "'"
+    // 4th keyboard row
+    key <AB02> { [ NoSymbol, NoSymbol, multiply, U22C5 ] }; // "x"
+    key <AB03> { [ NoSymbol, NoSymbol, copyright, cent ] }; // "c"
+    key <AB04> { [ NoSymbol, NoSymbol, downarrow, U25CA ] }; // "v"
+    key <AB06> { [ NoSymbol, NoSymbol, PgDown, PgDown ] }; // "n"
+    key <AB07> { [ NoSymbol, NoSymbol, Next, Next ] }; // "m"
+    key <AB08> { [ NoSymbol, NoSymbol, guillemotleft, less ] }; // ","
+    key <AB09> { [ NoSymbol, NoSymbol, guillemotright, greater ] }; // "."
+    key <AB10> { [ NoSymbol, NoSymbol, ellipsis, NoSymbol ] }; // "/"
+    // 5th keyboard row
+    key <SPCE> { [ space, space, nobreakspace, nobreakspace ] }; // " "
+    
+    //Arrows!!!
+    key <AD08> {
+          type="MOD5_NAV",
+          [ NoSymbol, NoSymbol, Up, Up ],
+          actions[Group1]=[NoAction(), NoAction(), RedirectKey(key=<UP>,clearmods=ISO_Level3_Shift)]
+    };
+    key <AC07> {
+          type="MOD5_NAV",
+          [ NoSymbol, NoSymbol, Left, Left ],
+          actions[Group1]=[NoAction(), NoAction(), RedirectKey(key=<LEFT>,clearmods=ISO_Level3_Shift)]
+    };
+    key <AC08> {
+          type="MOD5_NAV",
+          [ NoSymbol, NoSymbol, Down, Down ],
+          actions[Group1]=[NoAction(), NoAction(), RedirectKey(key=<DOWN>,clearmods=ISO_Level3_Shift)]
+    };
+    key <AC09> {
+          type="MOD5_NAV",
+          [ NoSymbol, NoSymbol, Right, Right ],
+          actions[Group1]=[NoAction(), NoAction(), RedirectKey(key=<RGHT>,clearmods=ISO_Level3_Shift)]
+    };
+    // Reference
+    // U+2030 PER MILLE SIGN
+    // U+0301 COMBINING ACUTE ACCENT
+    // U+22C5 DOT OPERATOR
+    // U+25CA LOZENGE
+    // U+2212 MINUS SIGN
+};
+    //Add file /usr/share/X11/xkb/types/basic
+    // type "MOD5_NAV" {
+    //             modifiers       = Shift+Mod5;
+    //             map[None]      = level1;
+    //             map[Shift]      = level2;
+    //             map[Mod5]        = level3;
+    //             map[Mod5+Shift] = level3;
+    //             level_name[Level1] = "Base";
+    //             level_name[Level2] = "Caps";
+    //             level_name[Level3] = "Arrows";
+    // };
+
